@@ -154,7 +154,7 @@ body::before {
   padding: 16px 20px;
   font-size: 16px;
   border-radius: 40px;
-  border: 1.5px solid rgba(0, 0, 0, 0.25);
+  border: none;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
