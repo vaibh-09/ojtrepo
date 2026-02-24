@@ -13,18 +13,20 @@ interface DiagonalGalleryProps {
 const ScrollColumn = ({ speed = 20, reverse = false, images: baseImages = [] }: { speed?: number; reverse?: boolean; images?: string[] }) => {
   if (!baseImages || baseImages.length === 0) return null;
   
-  // Triple items for extremely smooth infinite scroll
-  const images = [...baseImages, ...baseImages, ...baseImages];
+  // Quadruple items for safety and smoothness
+  const images = [...baseImages, ...baseImages, ...baseImages, ...baseImages];
   const isDesktop = useMediaQuery('(min-width: 768px)');
   
-  const itemHeight = isDesktop ? 400 : 300; // itemHeight must match actual rendered height for smooth looping
-  const gap = isDesktop ? 256 : 128; // gap must match gap-64 (256px) for desktop, gap-32 (128px) for mobile
-  const totalHeight = (itemHeight + gap) * baseImages.length;
+  const itemHeight = isDesktop ? 160 : 120; 
+  const itemWidth = isDesktop ? 220 : 150;
+  const gap = isDesktop ? 24 : 16; 
 
+const totalHeight = (itemHeight + gap) * baseImages.length;
   return (
-    <div className={clsx("flex flex-col relative", isDesktop ? "gap-64" : "gap-32")}>
+    <div className="flex flex-col relative">
       <motion.div
-        className={clsx("flex flex-col", isDesktop ? "gap-64" : "gap-32")}
+        className="flex flex-col"
+        style={{ gap: `${gap}px` }}
         animate={{
           y: reverse ? [-totalHeight, 0] : [0, -totalHeight],
         }}
@@ -40,7 +42,8 @@ const ScrollColumn = ({ speed = 20, reverse = false, images: baseImages = [] }: 
         {images.map((src, index) => (
           <div
             key={index}
-            className="w-[220px] h-[300px] md:w-[500px] md:h-[400px] flex-shrink-0 rounded-[1.25rem] overflow-hidden border border-white/5 shadow-2xl relative group"
+            style={{ width: `${itemWidth}px`, height: `${itemHeight}px` }}
+            className="flex-shrink-0 rounded-[24px] md:rounded-[32px] overflow-hidden border border-white/10 shadow-xl relative group"
           >
             <img
               src={src}
@@ -60,10 +63,11 @@ const DiagonalGallery = ({ className, lane1, lane2 }: DiagonalGalleryProps) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
   
   return (
-    <div className={clsx("relative w-full h-[120vh] overflow-hidden flex justify-center gap-16 md:gap-48", className)}>
-      <div className="flex gap-16 md:gap-48 transform rotate-[25deg] scale-125 origin-center">
-        <ScrollColumn speed={160} images={lane1} />
-        {isDesktop && <ScrollColumn speed={140} reverse images={lane2} />}
+    <div className={clsx("relative w-full h-[120vh] overflow-hidden flex justify-center items-center gap-10 md:gap-[32px]", className)}>
+      <div className="flex gap-10 md:gap-[32px] transform rotate-[25deg] scale-[1.6] origin-center">
+        <ScrollColumn speed={120} images={lane1} />
+        {isDesktop && <ScrollColumn speed={100} reverse images={lane2} />}
+        {isDesktop && <ScrollColumn speed={140} images={lane1} />}
       </div>
     </div>
   );

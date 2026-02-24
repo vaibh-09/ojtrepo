@@ -11,7 +11,7 @@ interface ContactProps {
 }
 
 const inputClass =
-  "w-full h-[50px] md:h-[64px] bg-white/50 rounded-full px-4 md:px-6 text-[15px] md:text-lg text-text placeholder:text-muted/60 focus:outline-none backdrop-blur-sm transition-all duration-200";
+  "w-full h-[48px] md:h-[54px] bg-white/30 backdrop-blur-md border border-white/20 rounded-[12px] px-5 text-[14px] text-black placeholder:text-black/50 focus:outline-none transition-all duration-300";
 
 const Contact = ({ id = "contact", className }: ContactProps) => {
   const [status, setStatus] = useState<"idle" | "success" | "error" | "submitting">("idle");
@@ -129,12 +129,12 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
     <section
       id={id}
       className={clsx(
-        "h-[100dvh] w-screen flex items-center justify-start md:justify-end bg-background flex-shrink-0 relative overflow-hidden",
+        "h-[100dvh] w-screen bg-background flex-shrink-0 relative overflow-hidden",
         className,
       )}
     >
-      {/* Glassy Background Decoration - Reverted to right-biased layout */}
-      <div className="absolute top-0 right-[-10%] md:right-[-35%] w-[65%] h-full pointer-events-none z-0 opacity-40 overflow-hidden flex items-center justify-center">
+      {/* Gallery - right side */}
+      <div className="pointer-events-none z-0 opacity-60 overflow-hidden" style={{ position: 'absolute', right: '5%', top: '10%', width: '40%', height: '80vh', clipPath: 'inset(0)' }}>
         <DiagonalGallery 
           lane1={lane1Images} 
           lane2={lane2Images} 
@@ -142,158 +142,129 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent pointer-events-none z-1" />
+      {/* Gradient fade from left */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-transparent pointer-events-none z-1" />
 
-      <div className="w-full md:w-auto px-8 md:px-0 md:mr-[4%] lg:mr-[6%] relative z-10 md:translate-x-[200px]">
-        <div className="w-full max-w-[500px] md:max-w-[800px]">
+      {/* Left content: heading + form */}
+      <div className="absolute left-[5%] md:left-[8%] top-[12dvh] z-10 w-full max-w-[450px] md:max-w-[520px]">
 
-          {/* Eyebrow + Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8 md:mb-12"
+        {/* Label */}
+        <motion.p
+          initial={{ opacity: 0, y: -8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.4 }}
+          className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.3em] text-black/60 mb-1 md:mb-2"
+        >
+          Get In Touch
+        </motion.p>
+
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: -8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.5 }}
+          className="text-3xl md:text-5xl font-black text-black leading-tight mb-6 md:mb-8"
+        >
+          Let's Create<br />Together
+        </motion.h2>
+
+        {/* Form */}
+        <motion.form
+          id="contactForm"
+          onSubmit={handleSubmit}
+          className="contact-form flex flex-col gap-3 md:gap-4"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          <input
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Name"
+            className={inputClass}
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Email"
+            className={inputClass}
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            id="projectType"
+            type="text"
+            name="projectType"
+            placeholder="Project Type"
+            className={inputClass}
+            value={formData.projectType}
+            onChange={handleInputChange}
+          />
+          <textarea
+            id="message"
+            name="message"
+            rows={4}
+            placeholder="Message"
+            className="w-full bg-white/30 backdrop-blur-md border border-white/20 rounded-[12px] px-5 py-4 text-[14px] text-black placeholder:text-black/50 focus:outline-none transition-all duration-300 resize-none leading-relaxed min-h-[120px]"
+            value={formData.message}
+            onChange={handleInputChange}
+          />
+
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className={clsx(
+              "group flex items-center justify-center gap-2 px-8 h-11 bg-white/20 backdrop-blur-xl border border-white/30 text-black font-bold uppercase tracking-[0.2em] text-[10px] rounded-full transition-all duration-300 hover:bg-white/40 w-fit shadow-md mt-3",
+              status === "submitting" ? "opacity-70 cursor-not-allowed" : "hover:scale-[1.02]"
+            )}
           >
-            <span className="text-accent text-[15px] md:text-[18px] uppercase tracking-[0.4em] font-mono mb-4 md:mb-6 block">
-              Get in Touch
-            </span>
-            <h2 className="font-black text-text uppercase tracking-[0.2em] leading-[1.1]" style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)' }}>
-              Let's Create<br />
-              <span className="text-accent">Together</span>
-            </h2>
-          </motion.div>
+            <span>{status === "submitting" ? "Submitting..." : "Submit"}</span>
+            <ArrowRight className={clsx("w-3.5 h-3.5 transition-transform duration-300", status !== "submitting" && "group-hover:translate-x-1")} />
+          </button>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="bg-white/20 backdrop-blur-xl rounded-2xl p-4 md:p-8 shadow-xl"
-          >
-            <form id="contactForm" onSubmit={handleSubmit} className="contact-form">
+          {/* Contact Information */}
+          <div className="flex flex-col gap-1.5 mt-4 text-[10px] md:text-[11px] text-black font-medium leading-relaxed max-w-[320px]">
+            <div className="flex flex-col">
+              <span>98198 86633</span>
+              <a href="mailto:studio@aakritcinematic.in" className="hover:opacity-70 transition-opacity">
+                studio@aakritcinematic.in
+              </a>
+            </div>
+            <p className="opacity-80">
+              15-2, Vishwa Niwas, Third Floor, Chandrodaya CHS, Thakkar Bappa Colony Rd, Near Swastik Park, Chembur, Mumbai, Maharashtra 400071
+            </p>
+          </div>
 
-              {/* Name */}
-              <div style={{ marginBottom: "6px" }}>
-                <input
-                  id="name"
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  className={inputClass}
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
+          {status === "success" && (
+            <p className="text-black font-bold text-[9px] uppercase tracking-[0.2em] mt-2">
+              Message sent successfully!
+            </p>
+          )}
 
-              {/* Email */}
-              <div style={{ marginBottom: "6px" }}>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className={inputClass}
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-
-              {/* Project Type */}
-              <div style={{ marginBottom: "6px" }}>
-                <input
-                  id="projectType"
-                  type="text"
-                  name="projectType"
-                  placeholder="Project Type"
-                  className={inputClass}
-                  value={formData.projectType}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              {/* Message */}
-              <div style={{ marginBottom: "6px" }}>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={1}
-                  placeholder="Message"
-                  className="w-full bg-white/50 rounded-[2rem] px-4 md:px-6 py-3 md:py-4 text-[15px] md:text-lg text-text placeholder:text-muted/60 focus:outline-none backdrop-blur-sm transition-all duration-200 resize-none leading-relaxed min-h-[50px] md:min-h-[120px]"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={status === "submitting"}
-                className={clsx(
-                  "group flex items-center gap-3 md:gap-4 px-8 md:px-14 h-14 md:h-20 bg-white/20 backdrop-blur-xl text-text font-black uppercase tracking-[0.2em] text-[13px] md:text-[18px] rounded-full transition-all duration-300 hover:scale-[1.02] mb-6 md:mb-8 shadow-lg",
-                  status === "submitting" ? "opacity-70 cursor-not-allowed" : "hover:bg-white/30 hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)]"
-                )}
-              >
-                <span>{status === "submitting" ? "SENDING..." : "SEND MESSAGE"}</span>
-                <ArrowRight className={clsx("w-5 h-5 transition-transform duration-300", status !== "submitting" && "group-hover:translate-x-1")} />
-              </button>
-
-              {/* Contact Details (Large) */}
-              <div className="flex flex-col gap-1 mt-4 md:mt-6 px-2">
-                <div className="flex items-center gap-3 md:gap-4 text-lg md:text-2xl font-bold text-text">
-                  <span className="text-2xl md:text-3xl">📍</span>
-                  <span>Chembur</span>
-                </div>
-                <div className="flex items-center gap-3 md:gap-4 text-lg md:text-2xl font-bold text-text">
-                  <span className="text-2xl md:text-3xl">📲</span>
-                  <a 
-                    href="https://wa.me/919819886633" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="hover:text-accent transition-colors"
-                  >
-                    +91 98198 86633
-                  </a>
-                </div>
-                <div className="flex items-center gap-3 md:gap-4 text-lg md:text-2xl font-bold text-text">
-                  <span className="text-2xl md:text-3xl">✉️</span>
-                  <a href="mailto:studio@aakritcinematic.in" className="hover:text-accent transition-colors">
-                    studio@aakritcinematic.in
-                  </a>
-                </div>
-              </div>
-
-              {/* Success message */}
-              {status === "success" && (
-                <p className="mt-4 text-accent text-xs uppercase tracking-[0.25em]">
-                  Message sent — we'll reply within 24 hours.
-                </p>
-              )}
-
-              {/* Error message */}
-              {status === "error" && (
-                <div className="mt-4">
-                  <p className="text-red-500 text-xs uppercase tracking-[0.25em] font-bold">
-                    Error: {errorMessage}
-                  </p>
-                  <p className="text-red-400/60 text-[10px] uppercase tracking-[0.1em] mt-1">
-                    Please ensure the table exists and RLS policy allows inserts.
-                  </p>
-                </div>
-              )}
-            </form>
-          </motion.div>
-
-          {/* Footer */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-6 text-muted/50 text-xs"
-          >
-            © 2024 Aakrit Cinematic Solutions. All rights reserved.
-          </motion.p>
-        </div>
+          {status === "error" && (
+            <p className="text-red-600 text-[9px] uppercase tracking-[0.2em] font-bold mt-2">
+              Error: {errorMessage}
+            </p>
+          )}
+        </motion.form>
       </div>
+
+      {/* Footer */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.5 }}
+        style={{ position: 'absolute', bottom: 16, left: 24 }}
+        className="text-black/40 text-[8px] md:text-[9px] uppercase tracking-[0.2em]"
+      >
+        © 2025 Aakrit Cinematic Solutions. All rights reserved.
+      </motion.p>
     </section>
   );
 };
