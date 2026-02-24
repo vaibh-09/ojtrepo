@@ -224,24 +224,26 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
           </motion.button>
 
           {/* Contact Information */}
-          <div className="flex flex-col gap-8 mt-16 md:mt-24 max-w-[400px]">
-            <div className="flex flex-col gap-1 group">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-black/40 font-bold">Call Us</span>
-              <span className="text-black font-semibold text-base">98198 86633</span>
-            </div>
+          <div className="mt-32 md:mt-48 w-full">
+            <div className="flex flex-col gap-10 p-10 md:p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[32px] max-w-[500px] shadow-2xl">
+              <div className="flex flex-col gap-1.5 group">
+                <span className="text-[11px] uppercase tracking-[0.25em] text-black/50 font-bold">Call Us</span>
+                <span className="text-black font-semibold text-lg">98198 86633</span>
+              </div>
 
-            <div className="flex flex-col gap-1 group">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-black/40 font-bold">Email Us</span>
-              <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-base hover:opacity-70 transition-opacity underline decoration-black/10 underline-offset-4">
-                studio@aakritcinematic.in
-              </a>
-            </div>
+              <div className="flex flex-col gap-1.5 group">
+                <span className="text-[11px] uppercase tracking-[0.25em] text-black/50 font-bold">Email Us</span>
+                <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-lg hover:opacity-70 transition-opacity underline decoration-black/20 underline-offset-8">
+                  studio@aakritcinematic.in
+                </a>
+              </div>
 
-            <div className="flex flex-col gap-1 group">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-black/40 font-bold">Visit Us</span>
-              <p className="text-black/70 text-xs font-medium leading-relaxed">
-                15-2, Vishwa Niwas, Third Floor, Chandrodaya CHS, Thakkar Bappa Colony Rd, Near Swastik Park, Chembur, Mumbai, Maharashtra 400071
-              </p>
+              <div className="flex flex-col gap-1.5 group">
+                <span className="text-[11px] uppercase tracking-[0.25em] text-black/50 font-bold">Visit Us</span>
+                <p className="text-black/80 text-sm font-medium leading-relaxed">
+                  15-2, Vishwa Niwas, Third Floor, Chandrodaya CHS, Thakkar Bappa Colony Rd, Near Swastik Park, Chembur, Mumbai, Maharashtra 400071
+                </p>
+              </div>
             </div>
           </div>
 
