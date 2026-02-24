@@ -146,24 +146,28 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-transparent pointer-events-none z-1" />
 
       {/* Left content: heading + form */}
-      <div className="absolute left-[5%] md:left-[8%] top-[12dvh] z-10 w-full max-w-[450px] md:max-w-[520px]">
+      {/* Left content: heading + form */}
+      <div className="absolute left-[5%] md:left-[8%] top-[10dvh] z-10 w-full max-w-[450px] md:max-w-[550px]">
 
         {/* Label */}
-        <motion.p
-          initial={{ opacity: 0, y: -8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.4 }}
-          className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-black/40 mb-2 md:mb-3"
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+          className="flex items-center gap-4 mb-4 md:mb-6"
         >
-          Get In Touch
-        </motion.p>
+          <div className="w-8 h-[1px] bg-black/20" />
+          <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-black/60">
+            Get In Touch
+          </span>
+        </motion.div>
 
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -8 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.5 }}
-          className="text-3xl md:text-5xl font-black text-black leading-tight mb-6 md:mb-8"
+          className="text-4xl md:text-6xl font-black text-black leading-tight mb-12 md:mb-16"
         >
           Let's Create<br />Together
         </motion.h2>
@@ -172,7 +176,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         <motion.form
           id="contactForm"
           onSubmit={handleSubmit}
-          className="contact-form flex flex-col gap-8 md:gap-10"
+          className="flex flex-col gap-12 md:gap-16"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -182,7 +186,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
             type="text"
             name="name"
             placeholder="Name"
-            className={inputClass}
+            className={clsx(inputClass, "rounded-none border-black/10")}
             value={formData.name}
             onChange={handleInputChange}
             required
@@ -192,7 +196,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
             type="email"
             name="email"
             placeholder="Email"
-            className={inputClass}
+            className={clsx(inputClass, "rounded-none border-black/10")}
             value={formData.email}
             onChange={handleInputChange}
             required
@@ -202,7 +206,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
             type="text"
             name="projectType"
             placeholder="Project Type"
-            className={inputClass}
+            className={clsx(inputClass, "rounded-none border-black/10")}
             value={formData.projectType}
             onChange={handleInputChange}
           />
@@ -211,7 +215,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
             name="message"
             rows={4}
             placeholder="Message"
-            className="w-full bg-white/30 backdrop-blur-md border border-white/20 rounded-[12px] px-5 py-4 text-[14px] text-black placeholder:text-black/50 focus:outline-none transition-all duration-300 resize-none leading-relaxed min-h-[120px]"
+            className="w-full bg-white/30 backdrop-blur-md border border-black/10 rounded-none px-5 py-4 text-[14px] text-black placeholder:text-black/50 focus:outline-none transition-all duration-300 resize-none leading-relaxed min-h-[140px]"
             value={formData.message}
             onChange={handleInputChange}
           />
@@ -221,36 +225,36 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
             disabled={status === "submitting"}
             whileTap={{ 
               scale: 0.96, 
-              boxShadow: "0 0 40px rgba(0, 0, 0, 0.1)",
-              filter: "brightness(1.15)"
+              boxShadow: "0 0 50px rgba(0, 0, 0, 0.15)",
+              filter: "brightness(1.2)"
             }}
             className={clsx(
-              "group flex items-center justify-center gap-2 px-8 h-11 bg-black/5 backdrop-blur-md border border-black/10 text-black font-bold uppercase tracking-[0.2em] text-[10px] rounded-full transition-all duration-300 w-fit shadow-sm mt-8",
+              "group flex items-center justify-center gap-3 px-10 h-12 bg-black/5 backdrop-blur-md border border-black/10 text-black font-bold uppercase tracking-[0.3em] text-[11px] rounded-none transition-all duration-300 w-fit shadow-sm mt-12",
               status === "submitting" ? "opacity-70 cursor-not-allowed" : "hover:bg-black/10 hover:scale-[1.02]"
             )}
           >
             <span>{status === "submitting" ? "Submitting..." : "Submit"}</span>
-            <ArrowRight className={clsx("w-3.5 h-3.5 transition-transform duration-300", status !== "submitting" && "group-hover:translate-x-1")} />
+            <ArrowRight className={clsx("w-4 h-4 transition-transform duration-300", status !== "submitting" && "group-hover:translate-x-1")} />
           </motion.button>
 
           {/* Contact Information */}
-          <div className="mt-40 md:mt-64 w-full">
-            <div className="flex flex-col gap-10 p-10 md:p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[32px] max-w-[500px] shadow-2xl">
-              <div className="flex flex-col gap-1.5 group">
-                <span className="text-[11px] uppercase tracking-[0.25em] text-black/50 font-bold">Call Us</span>
-                <span className="text-black font-semibold text-lg">98198 86633</span>
+          <div className="mt-48 md:mt-80 w-full pb-20">
+            <div className="flex flex-col gap-12 p-10 md:p-14 bg-white/10 backdrop-blur-2xl border border-white/30 rounded-none max-w-[550px] shadow-2xl">
+              <div className="flex flex-col gap-2 group">
+                <span className="text-[11px] uppercase tracking-[0.3em] text-black/50 font-bold">Call Us</span>
+                <span className="text-black font-semibold text-xl">98198 86633</span>
               </div>
 
-              <div className="flex flex-col gap-1.5 group">
-                <span className="text-[11px] uppercase tracking-[0.25em] text-black/50 font-bold">Email Us</span>
-                <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-lg hover:opacity-70 transition-opacity underline decoration-black/20 underline-offset-8">
+              <div className="flex flex-col gap-2 group">
+                <span className="text-[11px] uppercase tracking-[0.3em] text-black/50 font-bold">Email Us</span>
+                <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-xl hover:opacity-70 transition-opacity underline decoration-black/20 underline-offset-8">
                   studio@aakritcinematic.in
                 </a>
               </div>
 
-              <div className="flex flex-col gap-1.5 group">
-                <span className="text-[11px] uppercase tracking-[0.25em] text-black/50 font-bold">Visit Us</span>
-                <p className="text-black/80 text-sm font-medium leading-relaxed">
+              <div className="flex flex-col gap-2 group">
+                <span className="text-[11px] uppercase tracking-[0.3em] text-black/50 font-bold">Visit Us</span>
+                <p className="text-black/80 text-base font-medium leading-relaxed">
                   15-2, Vishwa Niwas, Third Floor, Chandrodaya CHS, Thakkar Bappa Colony Rd, Near Swastik Park, Chembur, Mumbai, Maharashtra 400071
                 </p>
               </div>
@@ -258,13 +262,13 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
           </div>
 
           {status === "success" && (
-            <p className="text-black font-bold text-[9px] uppercase tracking-[0.2em] mt-2">
+            <p className="text-black font-bold text-[10px] uppercase tracking-[0.2em] mt-4">
               Message sent successfully!
             </p>
           )}
 
           {status === "error" && (
-            <p className="text-red-600 text-[9px] uppercase tracking-[0.2em] font-bold mt-2">
+            <p className="text-red-600 text-[10px] uppercase tracking-[0.2em] font-bold mt-4">
               Error: {errorMessage}
             </p>
           )}
