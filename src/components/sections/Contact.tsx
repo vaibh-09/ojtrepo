@@ -172,7 +172,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         <motion.form
           id="contactForm"
           onSubmit={handleSubmit}
-          className="contact-form flex flex-col gap-5 md:gap-6"
+          className="contact-form flex flex-col gap-8 md:gap-10"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -225,7 +225,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               filter: "brightness(1.15)"
             }}
             className={clsx(
-              "group flex items-center justify-center gap-2 px-8 h-11 bg-black/5 backdrop-blur-md border border-black/10 text-black font-bold uppercase tracking-[0.2em] text-[10px] rounded-full transition-all duration-300 w-fit shadow-sm mt-4",
+              "group flex items-center justify-center gap-2 px-8 h-11 bg-black/5 backdrop-blur-md border border-black/10 text-black font-bold uppercase tracking-[0.2em] text-[10px] rounded-full transition-all duration-300 w-fit shadow-sm mt-8",
               status === "submitting" ? "opacity-70 cursor-not-allowed" : "hover:bg-black/10 hover:scale-[1.02]"
             )}
           >
@@ -234,7 +234,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
           </motion.button>
 
           {/* Contact Information */}
-          <div className="mt-32 md:mt-48 w-full">
+          <div className="mt-40 md:mt-64 w-full">
             <div className="flex flex-col gap-10 p-10 md:p-12 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[32px] max-w-[500px] shadow-2xl">
               <div className="flex flex-col gap-1.5 group">
                 <span className="text-[11px] uppercase tracking-[0.25em] text-black/50 font-bold">Call Us</span>
