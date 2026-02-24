@@ -17,9 +17,9 @@ const ScrollColumn = ({ speed = 20, reverse = false, images: baseImages = [] }: 
   const images = [...baseImages, ...baseImages, ...baseImages, ...baseImages];
   const isDesktop = useMediaQuery('(min-width: 768px)');
   
-  const itemHeight = isDesktop ? 160 : 120; 
-  const itemWidth = isDesktop ? 220 : 150;
-  const gap = isDesktop ? 24 : 16; 
+  const itemHeight = isDesktop ? 110 : 80; 
+  const itemWidth = isDesktop ? 160 : 110;
+  const gap = isDesktop ? 16 : 12; 
 
 const totalHeight = (itemHeight + gap) * baseImages.length;
   return (
@@ -61,8 +61,14 @@ const totalHeight = (itemHeight + gap) * baseImages.length;
 
 const DiagonalGallery = ({ className, lane1, lane2 }: DiagonalGalleryProps) => {
   return (
-    <div className={clsx("relative w-full h-[120vh] overflow-hidden flex justify-center items-center gap-10 md:gap-[80px]", className)}>
-      <div className="flex gap-10 md:gap-[80px] transform rotate-[25deg] scale-[1.6] origin-center">
+    <div 
+      className={clsx("relative w-full h-full flex justify-center items-center gap-8 md:gap-12", className)}
+      style={{
+        WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%)',
+        maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%)',
+      }}
+    >
+      <div className="flex gap-8 md:gap-12 transform rotate-[30deg] scale-[1.7] origin-center">
         <ScrollColumn speed={120} images={lane1} />
         <ScrollColumn speed={100} reverse images={lane2} />
       </div>

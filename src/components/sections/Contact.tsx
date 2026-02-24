@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import DiagonalGallery from "./DiagonalGallery";
@@ -10,12 +9,8 @@ interface ContactProps {
   className?: string;
 }
 
-const inputClass =
-  "w-full h-[48px] md:h-[54px] bg-white/30 backdrop-blur-md border border-white/20 rounded-[12px] px-5 text-[14px] text-black placeholder:text-black/50 focus:outline-none transition-all duration-300";
-
 const Contact = ({ id = "contact", className }: ContactProps) => {
   const [status, setStatus] = useState<"idle" | "success" | "error" | "submitting">("idle");
-  const [errorMessage, setErrorMessage] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -105,11 +100,9 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
     } catch (err: any) {
       console.error('Error submitting form:', err);
       setStatus("error");
-      setErrorMessage(err.message || "Something went wrong.");
       if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
       timeoutRef.current = window.setTimeout(() => {
         setStatus("idle");
-        setErrorMessage("");
       }, 6000);
     }
   };
@@ -133,146 +126,146 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         className,
       )}
     >
-      {/* Gallery - right side */}
-      <div className="pointer-events-none z-0 opacity-60 overflow-hidden" style={{ position: 'absolute', right: '5%', top: '10%', width: '40%', height: '80vh', clipPath: 'inset(0)' }}>
+      {/* Gallery - right side background */}
+      <div className="pointer-events-none z-0 opacity-35" style={{ position: 'absolute', right: '0', top: '0', width: '55%', height: '100%', overflow: 'visible' }}>
         <DiagonalGallery 
           lane1={lane1Images} 
           lane2={lane2Images} 
-          className="!h-[150%] !w-full" 
+          className="!h-full !w-full" 
         />
       </div>
 
       {/* Gradient fade from left */}
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-transparent pointer-events-none z-1" />
 
-      {/* Left content: heading + form */}
-      {/* Left content: heading + form */}
-      <div className="absolute left-[5%] md:left-[8%] top-[10dvh] z-10 w-full max-w-[450px] md:max-w-[550px]">
-
-        {/* Label */}
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.1, duration: 0.5 }}
-          className="flex items-center gap-4 mb-4 md:mb-6"
+      {/* Centered Heading */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="absolute top-[80px] left-0 w-full z-20 text-center"
+      >
+        <h1 
+          className="text-white text-[56px] md:text-[72px] font-[800] tracking-[-1px] leading-tight lowercase mb-[25px]"
+          style={{ 
+            color: '#ffffff',
+            textShadow: "3px 3px 0px rgba(255, 165, 0, 0.6), 0 8px 20px rgba(255, 165, 0, 0.35)" 
+          }}
         >
-          <div className="w-8 h-[1px] bg-black/20" />
-          <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-black/60">
-            Get In Touch
-          </span>
-        </motion.div>
+          get in touch.
+        </h1>
+        <div className="w-[65%] max-w-[800px] h-[0.8px] bg-white/50 mx-auto" />
+      </motion.div>
 
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: -8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.5 }}
-          className="text-4xl md:text-6xl font-black text-black leading-tight mb-12 md:mb-16"
-        >
-          Let's Create<br />Together
-        </motion.h2>
-
-        {/* Form */}
+      {/* Left content: form (Restored absolute positioning) */}
+      <div className="absolute left-[5%] md:left-[8%] top-[22dvh] z-10 w-full max-w-[450px] md:max-w-[550px]">
         <motion.form
           id="contactForm"
           onSubmit={handleSubmit}
-          className="flex flex-col gap-12 md:gap-16"
+          className="flex flex-col gap-[12px]"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <input
-            id="name"
-            type="text"
-            name="name"
-            placeholder="Name"
-            className={clsx(inputClass, "rounded-none border-black/10")}
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-          />
-          <input
-            id="email"
-            type="email"
-            name="email"
-            placeholder="Email"
-            className={clsx(inputClass, "rounded-none border-black/10")}
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-          />
-          <input
-            id="projectType"
-            type="text"
-            name="projectType"
-            placeholder="Project Type"
-            className={clsx(inputClass, "rounded-none border-black/10")}
-            value={formData.projectType}
-            onChange={handleInputChange}
-          />
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            placeholder="Message"
-            className="w-full bg-white/30 backdrop-blur-md border border-black/10 rounded-none px-5 py-4 text-[14px] text-black placeholder:text-black/50 focus:outline-none transition-all duration-300 resize-none leading-relaxed min-h-[140px]"
-            value={formData.message}
-            onChange={handleInputChange}
-          />
+          <div className="flex flex-col gap-[18px]">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] h-[50px] text-[#333] placeholder:text-[#333]/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[16px]"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] h-[50px] text-[#333] placeholder:text-[#333]/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[16px]"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              name="projectType"
+              placeholder="Project Type"
+              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] h-[50px] text-[#333] placeholder:text-[#333]/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[16px]"
+              value={formData.projectType}
+              onChange={handleInputChange}
+            />
+            <textarea
+              name="message"
+              placeholder="Message"
+              rows={3}
+              required
+              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] py-[14px] text-[#333] placeholder:text-[#333]/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[16px] resize-none min-h-[100px]"
+              value={formData.message}
+              onChange={handleInputChange}
+            />
+          </div>
 
           <motion.button
             type="submit"
-            disabled={status === "submitting"}
-            whileTap={{ 
-              scale: 0.96, 
-              boxShadow: "0 0 50px rgba(0, 0, 0, 0.15)",
-              filter: "brightness(1.2)"
+            disabled={status === 'submitting'}
+            whileHover={{ 
+              scale: 1.02, 
+              backgroundColor: "rgba(255, 180, 0, 0.32)",
+              boxShadow: "0 4px 12px rgba(255, 170, 0, 0.35)"
             }}
-            className={clsx(
-              "group flex items-center justify-center gap-3 px-10 h-12 bg-black/5 backdrop-blur-md border border-black/10 text-black font-bold uppercase tracking-[0.3em] text-[11px] rounded-none transition-all duration-300 w-fit shadow-sm mt-12",
-              status === "submitting" ? "opacity-70 cursor-not-allowed" : "hover:bg-black/10 hover:scale-[1.02]"
-            )}
+            whileTap={{ scale: 0.98 }}
+            className="submit-btn w-[120px] h-[36px] flex items-center justify-center bg-[rgba(255,190,0,0.22)] backdrop-blur-[12px] border border-[rgba(255,160,0,0.6)] text-black font-semibold rounded-[24px] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-[1.5px] text-[13px] shadow-sm"
           >
-            <span>{status === "submitting" ? "Submitting..." : "Submit"}</span>
-            <ArrowRight className={clsx("w-4 h-4 transition-transform duration-300", status !== "submitting" && "group-hover:translate-x-1")} />
+            {status === 'submitting' ? 'Submitting...' : 'Submit'}
           </motion.button>
+        </motion.form>
 
-          {/* Contact Information */}
-          <div className="mt-48 md:mt-80 w-full pb-20">
-            <div className="flex flex-col gap-12 p-10 md:p-14 bg-white/10 backdrop-blur-2xl border border-white/30 rounded-none max-w-[550px] shadow-2xl">
-              <div className="flex flex-col gap-2 group">
-                <span className="text-[11px] uppercase tracking-[0.3em] text-black/50 font-bold">Call Us</span>
-                <span className="text-black font-semibold text-xl">98198 86633</span>
-              </div>
+        {/* Success Message UI */}
+        {status === 'success' && (
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-4 text-[#FFB400] font-medium flex items-center gap-2"
+          >
+            <span className="w-2 h-2 bg-[#FFB400] rounded-full animate-pulse" />
+            Thank you! We'll get back to you soon.
+          </motion.p>
+        )}
 
-              <div className="flex flex-col gap-2 group">
-                <span className="text-[11px] uppercase tracking-[0.3em] text-black/50 font-bold">Email Us</span>
-                <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-xl hover:opacity-70 transition-opacity underline decoration-black/20 underline-offset-8">
-                  studio@aakritcinematic.in
-                </a>
-              </div>
+        {/* Error Message UI */}
+        {status === 'error' && (
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-4 text-red-500 font-medium"
+          >
+            Something went wrong. Please try again.
+          </motion.p>
+        )}
 
-              <div className="flex flex-col gap-2 group">
-                <span className="text-[11px] uppercase tracking-[0.3em] text-black/50 font-bold">Visit Us</span>
-                <p className="text-black/80 text-base font-medium leading-relaxed">
-                  15-2, Vishwa Niwas, Third Floor, Chandrodaya CHS, Thakkar Bappa Colony Rd, Near Swastik Park, Chembur, Mumbai, Maharashtra 400071
-                </p>
-              </div>
+        {/* Contact Information */}
+        <div className="mt-8 w-full pb-20">
+          <div className="flex flex-col gap-[16px] p-4 md:p-6 bg-[rgba(255,240,200,0.35)] backdrop-blur-[18px] border-none rounded-[32px] max-w-[600px] shadow-sm leading-[1.6]">
+            <div className="flex flex-col gap-[2px] group">
+              <span className="text-[10px] uppercase tracking-[3px] text-black font-bold opacity-60">Call Us</span>
+              <span className="text-black font-semibold text-[14px]">98198 86633</span>
+            </div>
+
+            <div className="flex flex-col gap-[2px] group">
+              <span className="text-[10px] uppercase tracking-[3px] text-black font-bold opacity-60">Email Us</span>
+              <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-[14px] hover:underline hover:opacity-70 transition-all">
+                studio@aakritcinematic.in
+              </a>
+            </div>
+
+            <div className="flex flex-col gap-[2px] group">
+              <span className="text-[10px] uppercase tracking-[3px] text-black font-bold opacity-60">Visit Us</span>
+              <p className="text-black text-[14px] font-semibold leading-relaxed">
+                15-2, Vishwa Niwas, Third Floor, Chandrodaya CHS, Thakkar Bappa Colony Rd, Near Swastik Park, Chembur, Mumbai, Maharashtra 400071
+              </p>
             </div>
           </div>
-
-          {status === "success" && (
-            <p className="text-black font-bold text-[10px] uppercase tracking-[0.2em] mt-4">
-              Message sent successfully!
-            </p>
-          )}
-
-          {status === "error" && (
-            <p className="text-red-600 text-[10px] uppercase tracking-[0.2em] font-bold mt-4">
-              Error: {errorMessage}
-            </p>
-          )}
-        </motion.form>
+        </div>
       </div>
 
       {/* Footer */}
