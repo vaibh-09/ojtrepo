@@ -148,16 +148,6 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
       {/* Left content: heading + form */}
       <div className="absolute left-[5%] md:left-[8%] top-[12dvh] z-10 w-full max-w-[450px] md:max-w-[520px]">
 
-        {/* Label */}
-        <motion.p
-          initial={{ opacity: 0, y: -8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.4 }}
-          className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.3em] text-black/60 mb-1 md:mb-2"
-        >
-          Get In Touch
-        </motion.p>
-
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -8 }}
@@ -172,7 +162,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         <motion.form
           id="contactForm"
           onSubmit={handleSubmit}
-          className="contact-form flex flex-col gap-3 md:gap-4"
+          className="contact-form flex flex-col gap-5 md:gap-6"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -216,29 +206,43 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
             onChange={handleInputChange}
           />
 
-          <button
+          <motion.button
             type="submit"
             disabled={status === "submitting"}
+            whileTap={{ 
+              scale: 0.96, 
+              boxShadow: "0 0 40px rgba(0, 0, 0, 0.1)",
+              filter: "brightness(1.15)"
+            }}
             className={clsx(
-              "group flex items-center justify-center gap-2 px-8 h-11 bg-white/20 backdrop-blur-xl border border-white/30 text-black font-bold uppercase tracking-[0.2em] text-[10px] rounded-full transition-all duration-300 hover:bg-white/40 w-fit shadow-md mt-3",
-              status === "submitting" ? "opacity-70 cursor-not-allowed" : "hover:scale-[1.02]"
+              "group flex items-center justify-center gap-2 px-8 h-11 bg-black/5 backdrop-blur-md border border-black/10 text-black font-bold uppercase tracking-[0.2em] text-[10px] rounded-full transition-all duration-300 w-fit shadow-sm mt-4",
+              status === "submitting" ? "opacity-70 cursor-not-allowed" : "hover:bg-black/10 hover:scale-[1.02]"
             )}
           >
             <span>{status === "submitting" ? "Submitting..." : "Submit"}</span>
             <ArrowRight className={clsx("w-3.5 h-3.5 transition-transform duration-300", status !== "submitting" && "group-hover:translate-x-1")} />
-          </button>
+          </motion.button>
 
           {/* Contact Information */}
-          <div className="flex flex-col gap-1.5 mt-4 text-[10px] md:text-[11px] text-black font-medium leading-relaxed max-w-[320px]">
-            <div className="flex flex-col">
-              <span>98198 86633</span>
-              <a href="mailto:studio@aakritcinematic.in" className="hover:opacity-70 transition-opacity">
+          <div className="flex flex-col gap-8 mt-16 md:mt-24 max-w-[400px]">
+            <div className="flex flex-col gap-1 group">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-black/40 font-bold">Call Us</span>
+              <span className="text-black font-semibold text-base">98198 86633</span>
+            </div>
+
+            <div className="flex flex-col gap-1 group">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-black/40 font-bold">Email Us</span>
+              <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-base hover:opacity-70 transition-opacity underline decoration-black/10 underline-offset-4">
                 studio@aakritcinematic.in
               </a>
             </div>
-            <p className="opacity-80">
-              15-2, Vishwa Niwas, Third Floor, Chandrodaya CHS, Thakkar Bappa Colony Rd, Near Swastik Park, Chembur, Mumbai, Maharashtra 400071
-            </p>
+
+            <div className="flex flex-col gap-1 group">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-black/40 font-bold">Visit Us</span>
+              <p className="text-black/70 text-xs font-medium leading-relaxed">
+                15-2, Vishwa Niwas, Third Floor, Chandrodaya CHS, Thakkar Bappa Colony Rd, Near Swastik Park, Chembur, Mumbai, Maharashtra 400071
+              </p>
+            </div>
           </div>
 
           {status === "success" && (

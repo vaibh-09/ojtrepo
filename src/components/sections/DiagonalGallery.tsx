@@ -43,7 +43,7 @@ const totalHeight = (itemHeight + gap) * baseImages.length;
           <div
             key={index}
             style={{ width: `${itemWidth}px`, height: `${itemHeight}px` }}
-            className="flex-shrink-0 rounded-[24px] md:rounded-[32px] overflow-hidden border border-white/10 shadow-xl relative group"
+            className="flex-shrink-0 rounded-[24px] md:rounded-[32px] overflow-hidden shadow-xl relative group"
           >
             <img
               src={src}
@@ -60,14 +60,11 @@ const totalHeight = (itemHeight + gap) * baseImages.length;
 };
 
 const DiagonalGallery = ({ className, lane1, lane2 }: DiagonalGalleryProps) => {
-  const isDesktop = useMediaQuery('(min-width: 768px)');
-  
   return (
-    <div className={clsx("relative w-full h-[120vh] overflow-hidden flex justify-center items-center gap-10 md:gap-[32px]", className)}>
-      <div className="flex gap-10 md:gap-[32px] transform rotate-[25deg] scale-[1.6] origin-center">
+    <div className={clsx("relative w-full h-[120vh] overflow-hidden flex justify-center items-center gap-10 md:gap-[80px]", className)}>
+      <div className="flex gap-10 md:gap-[80px] transform rotate-[25deg] scale-[1.6] origin-center">
         <ScrollColumn speed={120} images={lane1} />
-        {isDesktop && <ScrollColumn speed={100} reverse images={lane2} />}
-        {isDesktop && <ScrollColumn speed={140} images={lane1} />}
+        <ScrollColumn speed={100} reverse images={lane2} />
       </div>
     </div>
   );
