@@ -146,15 +146,24 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         className="absolute top-[80px] left-0 w-full z-20 text-center"
       >
         <h1 
-          className="text-white text-[56px] md:text-[72px] font-[800] tracking-[-1px] leading-tight lowercase mb-[25px]"
+          className="text-white text-[56px] md:text-[72px] font-[800] tracking-[-1px] leading-tight lowercase mb-[10px]"
           style={{ 
             color: '#ffffff',
-            textShadow: "3px 3px 0px rgba(255, 165, 0, 0.6), 0 8px 20px rgba(255, 165, 0, 0.35)" 
+            textShadow: "0 8px 30px rgba(255, 180, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.15)" 
           }}
         >
           get in touch.
         </h1>
-        <div className="w-[65%] max-w-[800px] h-[0.8px] bg-white/50 mx-auto" />
+        <motion.div 
+          className="w-[85%] max-w-[1000px] h-[0.5px] bg-white/40 mx-auto" 
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+          style={{ 
+            boxShadow: "0 0 12px rgba(255, 255, 255, 0.4), 0 0 4px rgba(255, 255, 255, 0.2)",
+            backdropFilter: "blur(4px)"
+          }}
+        />
       </motion.div>
 
       {/* Left content: form (Restored absolute positioning) */}
