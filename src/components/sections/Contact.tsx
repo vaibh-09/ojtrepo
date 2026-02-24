@@ -148,6 +148,16 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
       {/* Left content: heading + form */}
       <div className="absolute left-[5%] md:left-[8%] top-[12dvh] z-10 w-full max-w-[450px] md:max-w-[520px]">
 
+        {/* Label */}
+        <motion.p
+          initial={{ opacity: 0, y: -8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.4 }}
+          className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.4em] text-black/40 mb-2 md:mb-3"
+        >
+          Get In Touch
+        </motion.p>
+
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -8 }}
