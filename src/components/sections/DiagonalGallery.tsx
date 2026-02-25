@@ -68,7 +68,7 @@ const DiagonalGallery = ({ className, lane1, lane2 }: DiagonalGalleryProps) => {
         maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)',
       }}
     >
-      <div className="flex gap-8 md:gap-12 transform rotate-[30deg] scale-[1.7] origin-center overflow-visible">
+      <div className="flex gap-8 md:gap-12 transform rotate-[30deg] scale-[1.7] translate-x-[10%] origin-center overflow-visible">
         <ScrollColumn speed={40} images={lane1} />
         <ScrollColumn speed={35} reverse images={lane2} />
       </div>
