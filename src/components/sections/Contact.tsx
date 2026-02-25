@@ -255,7 +255,11 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
 
             <div className="flex flex-col gap-[2px] group">
               <span className="text-[10px] uppercase tracking-[3px] text-black font-bold opacity-60">Email Us</span>
-              <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-[14px] hover:underline transition-all">
+              <a 
+                href="mailto:studio@aakritcinematic.in" 
+                className="text-black font-semibold text-[14px] hover:underline transition-all"
+                style={{ color: 'black' }}
+              >
                 studio@aakritcinematic.in
               </a>
             </div>
