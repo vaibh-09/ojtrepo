@@ -184,3 +184,20 @@ body {
 .contact-form textarea:focus {
   border-color: rgba(0, 0, 0, 0.45);
 }
+
+
+/* Soft reset – Tailwind friendly */
+.reset-scope {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  color: #111;
+  isolation: isolate; /* KEY */
+}
+
+.reset-scope * {
+  font-family: inherit !important;
+}
+
+/* Radial fade from center for phone/tablet gallery overlay */
+.bg-radial-fade-from-center {
+  background: radial-gradient(ellipse at center, transparent 30%, #f2dd5e 85%);
+}

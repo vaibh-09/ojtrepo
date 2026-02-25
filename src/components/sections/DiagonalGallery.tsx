@@ -10,23 +10,32 @@ interface DiagonalGalleryProps {
   lane2?: string[];
 }
 
-const ScrollColumn = ({ speed = 20, reverse = false, images: baseImages = [] }: { speed?: number; reverse?: boolean; images?: string[] }) => {
+const ScrollColumn = ({
+  speed = 10,
+  reverse = false,
+  images: baseImages = [],
+}: {
+  speed?: number;
+  reverse?: boolean;
+  images?: string[];
+}) => {
   if (!baseImages || baseImages.length === 0) return null;
-  
+
   // Quadruple items for safety and smoothness
   const images = [...baseImages, ...baseImages, ...baseImages, ...baseImages];
-  const isDesktop = useMediaQuery('(min-width: 768px)');
-  
-  const itemHeight = isDesktop ? 110 : 80; 
-  const itemWidth = isDesktop ? 160 : 110;
-  const gap = isDesktop ? 16 : 12; 
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
-const totalHeight = (itemHeight + gap) * baseImages.length;
+  const itemHeight = isDesktop ? 110 : 80;
+  const itemWidth = isDesktop ? 160 : 110;
+  const gap = isDesktop ? 16 : 12;
+
+  const totalHeight = (itemHeight + gap) * baseImages.length;
   return (
     <div className="flex flex-col relative">
       <motion.div
         className="flex flex-col"
         style={{ gap: `${gap}px` }}
+        
         animate={{
           y: reverse ? [-totalHeight, 0] : [0, -totalHeight],
         }}
@@ -61,16 +70,21 @@ const totalHeight = (itemHeight + gap) * baseImages.length;
 
 const DiagonalGallery = ({ className, lane1, lane2 }: DiagonalGalleryProps) => {
   return (
-    <div 
-      className={clsx("relative w-full h-full flex justify-center items-center gap-8 md:gap-12 overflow-visible", className)}
+    <div
+      className={clsx(
+        "relative w-full h-full flex justify-center items-center gap-20 md:gap-32 overflow-visible",
+        className,
+      )}
       style={{
-        WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)',
-        maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)',
+        WebkitMaskImage:
+          "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)",
+        maskImage:
+          "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)",
       }}
     >
-      <div className="flex gap-8 md:gap-12 transform rotate-[30deg] scale-[1.7] translate-x-[10%] origin-center overflow-visible">
-        <ScrollColumn speed={40} images={lane1} />
-        <ScrollColumn speed={35} reverse images={lane2} />
+      <div className="flex gap-[0.8em] md:gap-[1em] transform rotate-[12deg] scale-[1.7] translate-x-[10%] origin-center overflow-visible">
+        <ScrollColumn speed={35} images={lane1} />
+        <ScrollColumn speed={30} reverse images={lane2} />
       </div>
     </div>
   );
