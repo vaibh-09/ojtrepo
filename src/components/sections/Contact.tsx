@@ -160,7 +160,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
       </motion.div>
 
       {/* Left content: form (Restored absolute positioning) */}
-      <div className="absolute left-[5%] md:left-[8%] top-[160px] md:top-[22dvh] z-10 w-[90%] md:w-full max-w-[450px] md:max-w-[550px] flex flex-col gap-10 md:gap-16">
+      <div className="absolute left-[5%] md:left-[8%] top-[160px] md:top-[22dvh] z-10 w-[90%] md:w-full max-w-[450px] md:max-w-[550px] flex flex-col gap-[60px] md:gap-[100px]">
         <motion.form
           id="contactForm"
           onSubmit={handleSubmit}
