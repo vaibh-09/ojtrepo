@@ -141,7 +141,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
     >
       {/* Gallery - right side background */}
       <div
-        className="pointer-events-none z-0 opacity-35"
+        className="pointer-events-none z-0 opacity-65"
         style={{
           position: "absolute",
           right: "0",
@@ -182,7 +182,26 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
       </motion.div>
 
       {/* Left content: form (Glass-tuned replacement) */}
-      <div className="absolute left-[5%] md:left-[8%] top-[160px] md:top-[22dvh] z-10 w-[90%] md:w-full max-w-[450px] md:max-w-[550px] flex flex-col gap-[60px] md:gap-[100px]">
+      <div
+        className="
+    absolute
+    left-1/3
+    -translate-x-1/2
+    md:left-[45%]
+    md:-translate-x-1/2
+    top-[160px]
+    md:top-[22dvh]
+    z-10
+    w-[90%]
+    md:w-full
+    max-w-[450px]
+    md:max-w-[550px]
+    flex
+    flex-col
+    gap-[60px]
+    md:gap-[100px]
+  "
+      >
         <motion.form
           id="contactForm"
           onSubmit={handleSubmit}
@@ -539,7 +558,23 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-black/90 text-[9px] md:text-[11px] uppercase tracking-[0.4em] whitespace-nowrap font-extrabold"
+        className="
+    absolute
+    bottom-[2em] md:bottom-10
+    left-1/2 -translate-x-1/2
+    z-[50]
+    px-[1.2em] py-[0.6em]
+    text-black
+    text-[9px] md:text-[11px]
+    uppercase
+    tracking-[0.35em]
+    whitespace-nowrap
+    font-extrabold
+    bg-[rgba(255,255,255,0.22)]
+    backdrop-blur-[1.2em]
+    rounded-full
+    shadow-[0_0.4em_1.2em_rgba(0,0,0,0.18)]
+  "
       >
         © 2025 AAKRIT CINEMATIC SOLUTIONS. ALL RIGHTS RESERVED.
       </motion.p>

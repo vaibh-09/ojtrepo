@@ -81,9 +81,9 @@ const DiagonalGallery = ({ className, lane1, lane2 }: DiagonalGalleryProps) => {
           "radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)",
       }}
     >
-      <div className="flex gap-[0.5em] md:gap-[0.8em] transform rotate-[15deg] scale-[1.7] translate-x-[10%] origin-center overflow-visible">
-        <ScrollColumn speed={55} images={lane1} />
-        <ScrollColumn speed={50} reverse images={lane2} />
+      <div className="flex gap-[0.8em] md:gap-[1em] transform rotate-[12deg] scale-[1.7] translate-x-[10%] origin-center overflow-visible">
+        <ScrollColumn speed={35} images={lane1} />
+        <ScrollColumn speed={30} reverse images={lane2} />
       </div>
     </div>
   );
