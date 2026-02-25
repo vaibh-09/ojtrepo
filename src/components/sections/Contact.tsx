@@ -246,7 +246,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         )}
 
         {/* Contact Information */}
-        <div className="mt-12 md:mt-16 w-full pb-10 md:pb-20">
+        <div className="mt-20 md:mt-28 w-full pb-10 md:pb-20">
           <div className="flex flex-col gap-[24px] md:gap-[32px] p-4 md:p-6 bg-[rgba(255,240,200,0.35)] backdrop-blur-[18px] border-none rounded-[24px] md:rounded-[32px] max-w-[600px] shadow-sm leading-[1.6]">
             <div className="flex flex-col gap-[2px] group">
               <span className="text-[10px] uppercase tracking-[3px] text-black font-bold opacity-60">Call Us</span>
