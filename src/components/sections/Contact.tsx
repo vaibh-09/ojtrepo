@@ -143,19 +143,19 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute top-[50px] md:top-[80px] left-0 w-full z-20 text-center px-4"
+        className="absolute top-[110px] md:top-[120px] left-0 w-full z-20 text-center px-4"
       >
         <h1 
-          className="text-white text-[28px] md:text-[72px] font-[800] tracking-[-1px] leading-tight lowercase mb-[12px] md:mb-[25px]"
+          className="text-black text-[32px] md:text-[82px] font-[900] tracking-[-2px] leading-tight lowercase mb-[12px] md:mb-[25px]"
           style={{ 
-            color: '#ffffff',
-            textShadow: "3px 3px 0px rgba(255, 165, 0, 0.6), 0 8px 20px rgba(255, 165, 0, 0.35)" 
+            color: '#000000',
+            textShadow: "none" 
           }}
         >
           get in touch.
         </h1>
         <div 
-          className="w-[65%] max-w-[800px] h-[0.8px] bg-white/50 mx-auto" 
+          className="w-[65%] max-w-[800px] h-[1px] bg-black/10 mx-auto" 
         />
       </motion.div>
 
