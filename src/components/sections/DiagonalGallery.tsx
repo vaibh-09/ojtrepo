@@ -43,7 +43,7 @@ const totalHeight = (itemHeight + gap) * baseImages.length;
           <div
             key={index}
             style={{ width: `${itemWidth}px`, height: `${itemHeight}px` }}
-            className="flex-shrink-0 rounded-[24px] md:rounded-[32px] overflow-hidden shadow-xl relative group"
+            className="flex-shrink-0 rounded-[35px] md:rounded-[50px] overflow-hidden shadow-xl relative group"
           >
             <img
               src={src}
