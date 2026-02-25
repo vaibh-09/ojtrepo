@@ -279,7 +279,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 text-black/60 text-[8px] md:text-[10px] uppercase tracking-[0.3em] whitespace-nowrap font-bold"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-black/90 text-[9px] md:text-[11px] uppercase tracking-[0.4em] whitespace-nowrap font-extrabold"
       >
         © 2025 AAKRIT CINEMATIC SOLUTIONS. ALL RIGHTS RESERVED.
       </motion.p>
