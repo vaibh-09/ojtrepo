@@ -35,6 +35,7 @@ const ScrollColumn = ({
       <motion.div
         className="flex flex-col"
         style={{ gap: `${gap}px` }}
+        
         animate={{
           y: reverse ? [-totalHeight, 0] : [0, -totalHeight],
         }}

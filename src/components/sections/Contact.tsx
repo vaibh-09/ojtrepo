@@ -139,9 +139,9 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         className,
       )}
     >
-      {/* Gallery - right side background */}
+      {/* Gallery - right side background (tablet/desktop) */}
       <div
-        className="pointer-events-none z-0 opacity-65"
+        className="pointer-events-none z-0 opacity-65 hidden md:block"
         style={{
           position: "absolute",
           right: "0",
@@ -158,18 +158,41 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         />
       </div>
 
+      {/* Gallery behind content (phone only) */}
+      <div
+        className="pointer-events-none z-0 opacity-40 md:hidden"
+        style={{
+          position: "absolute",
+          left: "50%",
+          transform: "translateX(-50%)",
+          top: "0",
+          width: "100%",
+          height: "100%",
+          overflow: "visible",
+        }}
+      >
+        <DiagonalGallery
+          lane1={lane1Images}
+          lane2={lane2Images}
+          className="!h-full !w-full"
+        />
+      </div>
+
       {/* Gradient fade from left */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-transparent pointer-events-none z-1" />
+      <div className="absolute inset-0 md:bg-gradient-to-r from-background via-background/95 to-transparent pointer-events-none z-1" />
+
+      {/* Radial gradient overlay for phone to fade gallery behind form */}
+      <div className="absolute inset-0 md:hidden bg-radial-fade-from-center pointer-events-none z-[5]" />
 
       {/* Centered Heading */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute top-[110px] md:top-[120px] left-0 w-full z-20 text-center px-4"
+        className="absolute top-[5em] md:top-[7.5em] left-0 w-full z-20 text-center px-4"
       >
         <h1
-          className="text-white text-[32px] md:text-[82px] font-[900] tracking-[-2px] leading-tight lowercase mb-[12px] md:mb-[25px]"
+          className="text-white text-[2em] md:text-[5.125em] font-[900] tracking-[-0.125em] leading-tight lowercase mb-[0.75em] md:mb-[1.5em]"
           style={{
             color: "#ffffff",
             textShadow:
@@ -185,21 +208,23 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
       <div
         className="
     absolute
-    left-1/3
+    left-1/2
     -translate-x-1/2
-    md:left-[45%]
-    md:-translate-x-1/2
-    top-[160px]
+    md:left-[5%]
+    lg:left-[6%]
+    md:translate-x-0
+    top-[10em]
     md:top-[22dvh]
     z-10
     w-[90%]
     md:w-full
-    max-w-[450px]
-    md:max-w-[550px]
+    max-w-[28em]
+    md:max-w-[34em]
+    lg:max-w-[37.5em]
     flex
     flex-col
-    gap-[60px]
-    md:gap-[100px]
+    gap-[3.75em]
+    md:gap-[6.25em]
   "
       >
         <motion.form
@@ -208,9 +233,9 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex flex-col gap-[12px]"
+          className="flex flex-col gap-[0.75em]"
         >
-          <div className="flex flex-col gap-[14px] md:gap-[18px]">
+          <div className="flex flex-col gap-[0.875em] md:gap-[1.125em]">
             {/* Name */}
             <input
               type="text"
@@ -221,21 +246,21 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               onChange={handleInputChange}
               className="
           w-full
-          bg-[rgba(255,255,255,0.26)]
+          bg-[rgba(255,255,255,0.4)]
           backdrop-blur-[2.4em]
-          border border-[rgba(255,255,255,0.35)]
-          rounded-[20px]
-          px-[20px]
-          h-[44px] md:h-[50px]
+          border border-[rgba(255,255,255,0.5)]
+          rounded-[1.25em]
+          px-[1.25em]
+          h-[2.75em] md:h-[3.125em]
           text-[#333]
           placeholder:text-[#333]/40
           focus:outline-none
-          focus:bg-[rgba(255,255,255,0.32)]
+          focus:bg-[rgba(255,255,255,0.5)]
           focus:backdrop-blur-[2.6em]
           focus:border-[rgba(255,180,0,0.55)]
           focus:shadow-[0_0_1.2em_rgba(255,180,0,0.28)]
           transition-all duration-300
-          text-[14px] md:text-[16px]
+          text-[0.875em] md:text-[1em]
         "
             />
 
@@ -249,21 +274,21 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               onChange={handleInputChange}
               className="
           w-full
-          bg-[rgba(255,255,255,0.26)]
+          bg-[rgba(255,255,255,0.4)]
           backdrop-blur-[2.4em]
-          border border-[rgba(255,255,255,0.35)]
-          rounded-[20px]
-          px-[20px]
-          h-[44px] md:h-[50px]
+          border border-[rgba(255,255,255,0.5)]
+          rounded-[1.25em]
+          px-[1.25em]
+          h-[2.75em] md:h-[3.125em]
           text-[#333]
           placeholder:text-[#333]/40
           focus:outline-none
-          focus:bg-[rgba(255,255,255,0.32)]
+          focus:bg-[rgba(255,255,255,0.5)]
           focus:backdrop-blur-[2.6em]
           focus:border-[rgba(255,180,0,0.55)]
           focus:shadow-[0_0_1.2em_rgba(255,180,0,0.28)]
           transition-all duration-300
-          text-[14px] md:text-[16px]
+          text-[0.875em] md:text-[1em]
         "
             />
 
@@ -276,21 +301,21 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               onChange={handleInputChange}
               className="
           w-full
-          bg-[rgba(255,255,255,0.26)]
+          bg-[rgba(255,255,255,0.4)]
           backdrop-blur-[2.4em]
-          border border-[rgba(255,255,255,0.35)]
-          rounded-[20px]
-          px-[20px]
-          h-[44px] md:h-[50px]
+          border border-[rgba(255,255,255,0.5)]
+          rounded-[1.25em]
+          px-[1.25em]
+          h-[2.75em] md:h-[3.125em]
           text-[#333]
           placeholder:text-[#333]/40
           focus:outline-none
-          focus:bg-[rgba(255,255,255,0.32)]
+          focus:bg-[rgba(255,255,255,0.5)]
           focus:backdrop-blur-[2.6em]
           focus:border-[rgba(255,180,0,0.55)]
           focus:shadow-[0_0_1.2em_rgba(255,180,0,0.28)]
           transition-all duration-300
-          text-[14px] md:text-[16px]
+          text-[0.875em] md:text-[1em]
         "
             />
 
@@ -304,23 +329,23 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               onChange={handleInputChange}
               className="
           w-full
-          bg-[rgba(255,255,255,0.26)]
+          bg-[rgba(255,255,255,0.4)]
           backdrop-blur-[2.4em]
-          border border-[rgba(255,255,255,0.35)]
-          rounded-[20px]
-          px-[20px]
-          py-[12px] md:py-[14px]
+          border border-[rgba(255,255,255,0.5)]
+          rounded-[1.25em]
+          px-[1.25em]
+          py-[0.75em] md:py-[0.875em]
           text-[#333]
           placeholder:text-[#333]/40
           focus:outline-none
-          focus:bg-[rgba(255,255,255,0.32)]
+          focus:bg-[rgba(255,255,255,0.5)]
           focus:backdrop-blur-[2.6em]
           focus:border-[rgba(255,180,0,0.55)]
           focus:shadow-[0_0_1.2em_rgba(255,180,0,0.28)]
           transition-all duration-300
-          text-[14px] md:text-[16px]
+          text-[0.875em] md:text-[1em]
           resize-none
-          min-h-[70px] md:min-h-[100px]
+          min-h-[4.375em] md:min-h-[6.25em]
         "
             />
           </div>
@@ -335,21 +360,26 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               boxShadow: "0 0.8em 1.8em rgba(255,170,0,0.3)",
             }}
             whileTap={{ scale: 0.98 }}
-            className="
-        submit-btn
-        w-[85px] h-[28px]
-        flex items-center justify-center
-        bg-[rgba(255,190,0,0.18)]
-        backdrop-blur-[2.2em]
-        border border-[rgba(255,160,0,0.45)]
-        text-black font-semibold
-        rounded-[20px]
-        uppercase tracking-[1.2px]
-        text-[10px]
-        shadow-[0_0.6em_1.6em_rgba(255,170,0,0.25)]
-        transition-all duration-300
-        disabled:opacity-50 disabled:cursor-not-allowed
-      "
+            style={{
+              width: "7em",
+              height: "2.5em",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#ffffff",
+              backdropFilter: "blur(2.2em)",
+              WebkitBackdropFilter: "blur(2.2em)",
+              border: "1px solid rgba(255,255,255,0.6)",
+              color: "#000000",
+              fontWeight: "700",
+              fontSize: "0.75em",
+              borderRadius: "1.25em",
+              textTransform: "uppercase",
+              letterSpacing: "0.075em",
+              boxShadow: "0 0.8em 2em rgba(255,255,255,0.4)",
+              transition: "all 0.3s",
+              cursor: "pointer",
+            }}
           >
             {status === "submitting" ? "Submitting..." : "Submit"}
           </motion.button>
@@ -402,11 +432,11 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               borderRadius: "1.4em",
 
               /* 🔥 refined glass */
-              background: "rgba(255, 255, 255, 0.28)",
+              background: "rgba(255, 255, 255, 0.45)",
               backdropFilter: "blur(2.5em) saturate(135%)",
               WebkitBackdropFilter: "blur(2.5em) saturate(135%)",
 
-              border: "1px solid rgba(255,255,255,0.35)",
+              border: "1px solid rgba(255,255,255,0.55)",
 
               boxShadow:
                 "0 0.9em 2.2em -1em rgba(0,0,0,0.22), inset 0 0.08em 0 rgba(255,255,255,0.55)",
@@ -565,12 +595,12 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
     z-[50]
     px-[1.2em] py-[0.6em]
     text-black
-    text-[9px] md:text-[11px]
+    text-[0.5625em] md:text-[0.6875em]
     uppercase
     tracking-[0.35em]
     whitespace-nowrap
     font-extrabold
-    bg-[rgba(255,255,255,0.22)]
+    bg-[rgba(255,255,255,0.35)]
     backdrop-blur-[1.2em]
     rounded-full
     shadow-[0_0.4em_1.2em_rgba(0,0,0,0.18)]

@@ -196,3 +196,8 @@ body {
 .reset-scope * {
   font-family: inherit !important;
 }
+
+/* Radial fade from center for phone/tablet gallery overlay */
+.bg-radial-fade-from-center {
+  background: radial-gradient(ellipse at center, transparent 30%, #f2dd5e 85%);
+}
