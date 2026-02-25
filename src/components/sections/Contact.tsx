@@ -184,7 +184,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               name="email"
               placeholder="Email"
               required
-              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] h-[44px] md:h-[50px] text-black placeholder:text-black/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[14px] md:text-[16px]"
+              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] h-[44px] md:h-[50px] text-[#333] placeholder:text-[#333]/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[14px] md:text-[16px]"
               value={formData.email}
               onChange={handleInputChange}
             />

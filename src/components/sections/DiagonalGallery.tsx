@@ -62,13 +62,13 @@ const totalHeight = (itemHeight + gap) * baseImages.length;
 const DiagonalGallery = ({ className, lane1, lane2 }: DiagonalGalleryProps) => {
   return (
     <div 
-      className={clsx("relative w-full h-full flex justify-center items-center gap-8 md:gap-12", className)}
+      className={clsx("relative w-full h-full flex justify-center items-center gap-8 md:gap-12 overflow-visible", className)}
       style={{
-        WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%)',
-        maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%)',
+        WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)',
+        maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)',
       }}
     >
-      <div className="flex gap-8 md:gap-12 transform rotate-[30deg] scale-[1.7] origin-center">
+      <div className="flex gap-8 md:gap-12 transform rotate-[30deg] scale-[1.7] origin-center overflow-visible">
         <ScrollColumn speed={120} images={lane1} />
         <ScrollColumn speed={100} reverse images={lane2} />
       </div>
