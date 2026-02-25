@@ -155,7 +155,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
           get in touch.
         </h1>
         <div 
-          className="w-[65%] max-w-[800px] h-[0.8px] bg-white/50 mx-auto" 
+          className="w-[65%] max-w-[800px] h-[1.2px] bg-white mx-auto shadow-[0_1px_2px_rgba(0,0,0,0.1)]" 
         />
       </motion.div>
 
