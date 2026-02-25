@@ -146,23 +146,16 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         className="absolute top-[80px] left-0 w-full z-20 text-center"
       >
         <h1 
-          className="text-white text-[56px] md:text-[72px] font-[800] tracking-[-1px] leading-tight lowercase mb-[10px]"
+          className="text-white text-[56px] md:text-[72px] font-[800] tracking-[-1px] leading-tight lowercase mb-[25px]"
           style={{ 
             color: '#ffffff',
-            textShadow: "0 8px 30px rgba(255, 180, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.15)" 
+            textShadow: "3px 3px 0px rgba(255, 165, 0, 0.6), 0 8px 20px rgba(255, 165, 0, 0.35)" 
           }}
         >
           get in touch.
         </h1>
-        <motion.div 
-          className="w-[85%] max-w-[1000px] h-[0.5px] bg-white/40 mx-auto" 
-          initial={{ scaleX: 0, opacity: 0 }}
-          whileInView={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-          style={{ 
-            boxShadow: "0 0 12px rgba(255, 255, 255, 0.4), 0 0 4px rgba(255, 255, 255, 0.2)",
-            backdropFilter: "blur(4px)"
-          }}
+        <div 
+          className="w-[65%] max-w-[800px] h-[0.8px] bg-white/50 mx-auto" 
         />
       </motion.div>
 
@@ -191,7 +184,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               name="email"
               placeholder="Email"
               required
-              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] h-[50px] text-[#333] placeholder:text-[#333]/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[16px]"
+              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] h-[50px] text-black placeholder:text-black/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[16px]"
               value={formData.email}
               onChange={handleInputChange}
             />
@@ -262,7 +255,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
 
             <div className="flex flex-col gap-[2px] group">
               <span className="text-[10px] uppercase tracking-[3px] text-black font-bold opacity-60">Email Us</span>
-              <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-[14px] hover:underline hover:opacity-70 transition-all">
+              <a href="mailto:studio@aakritcinematic.in" className="text-black font-semibold text-[14px] hover:underline transition-all">
                 studio@aakritcinematic.in
               </a>
             </div>
