@@ -69,8 +69,8 @@ const DiagonalGallery = ({ className, lane1, lane2 }: DiagonalGalleryProps) => {
       }}
     >
       <div className="flex gap-8 md:gap-12 transform rotate-[30deg] scale-[1.7] origin-center overflow-visible">
-        <ScrollColumn speed={240} images={lane1} />
-        <ScrollColumn speed={200} reverse images={lane2} />
+        <ScrollColumn speed={40} images={lane1} />
+        <ScrollColumn speed={35} reverse images={lane2} />
       </div>
     </div>
   );
