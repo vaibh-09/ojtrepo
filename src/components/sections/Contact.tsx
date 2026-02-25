@@ -146,16 +146,16 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         className="absolute top-[110px] md:top-[120px] left-0 w-full z-20 text-center px-4"
       >
         <h1 
-          className="text-black text-[32px] md:text-[82px] font-[900] tracking-[-2px] leading-tight lowercase mb-[12px] md:mb-[25px]"
+          className="text-white text-[32px] md:text-[82px] font-[900] tracking-[-2px] leading-tight lowercase mb-[12px] md:mb-[25px]"
           style={{ 
-            color: '#000000',
-            textShadow: "none" 
+            color: '#ffffff',
+            textShadow: "0 0 15px rgba(255, 120, 0, 0.8), 0 0 30px rgba(255, 165, 0, 0.4)" 
           }}
         >
           get in touch.
         </h1>
         <div 
-          className="w-[65%] max-w-[800px] h-[1px] bg-black/10 mx-auto" 
+          className="w-[65%] max-w-[800px] h-[1px] bg-white/50 mx-auto" 
         />
       </motion.div>
 
