@@ -160,7 +160,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
       </motion.div>
 
       {/* Left content: form (Restored absolute positioning) */}
-      <div className="absolute left-[5%] md:left-[8%] top-[160px] md:top-[22dvh] z-10 w-[90%] md:w-full max-w-[450px] md:max-w-[550px]">
+      <div className="absolute left-[5%] md:left-[8%] top-[160px] md:top-[22dvh] z-10 w-[90%] md:w-full max-w-[450px] md:max-w-[550px] flex flex-col gap-10 md:gap-16">
         <motion.form
           id="contactForm"
           onSubmit={handleSubmit}
@@ -246,8 +246,8 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         )}
 
         {/* Contact Information */}
-        <div className="mt-24 md:mt-32 w-full pb-10 md:pb-20">
-          <div className="flex flex-col gap-[16px] md:gap-[20px] p-8 md:p-10 bg-[rgba(255,240,200,0.35)] backdrop-blur-[18px] border-none rounded-[24px] md:rounded-[32px] max-w-[600px] shadow-sm leading-[1.6]">
+        <div className="w-full pb-10 md:pb-20">
+          <div className="flex flex-col gap-[16px] md:gap-[20px] p-10 md:p-12 bg-[rgba(255,240,200,0.35)] backdrop-blur-[18px] border-none rounded-[24px] md:rounded-[32px] max-w-[600px] shadow-sm leading-[1.6]">
             <div className="flex flex-col gap-[2px] group">
               <span className="text-[10px] uppercase tracking-[3px] text-black font-bold opacity-60">Call Us</span>
               <span className="text-black font-semibold text-[14px]">98198 86633</span>
