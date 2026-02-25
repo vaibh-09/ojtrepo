@@ -143,10 +143,10 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="absolute top-[60px] md:top-[80px] left-0 w-full z-20 text-center px-4"
+        className="absolute top-[50px] md:top-[80px] left-0 w-full z-20 text-center px-4"
       >
         <h1 
-          className="text-white text-[32px] md:text-[72px] font-[800] tracking-[-1px] leading-tight lowercase mb-[15px] md:mb-[25px]"
+          className="text-white text-[28px] md:text-[72px] font-[800] tracking-[-1px] leading-tight lowercase mb-[12px] md:mb-[25px]"
           style={{ 
             color: '#ffffff',
             textShadow: "3px 3px 0px rgba(255, 165, 0, 0.6), 0 8px 20px rgba(255, 165, 0, 0.35)" 
@@ -160,7 +160,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
       </motion.div>
 
       {/* Left content: form (Restored absolute positioning) */}
-      <div className="absolute left-[5%] md:left-[8%] top-[170px] md:top-[22dvh] z-10 w-[90%] md:w-full max-w-[450px] md:max-w-[550px]">
+      <div className="absolute left-[5%] md:left-[8%] top-[160px] md:top-[22dvh] z-10 w-[90%] md:w-full max-w-[450px] md:max-w-[550px]">
         <motion.form
           id="contactForm"
           onSubmit={handleSubmit}
@@ -169,7 +169,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <div className="flex flex-col gap-[18px]">
+          <div className="flex flex-col gap-[14px] md:gap-[18px]">
             <input
               type="text"
               name="name"
@@ -201,7 +201,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               placeholder="Message"
               rows={3}
               required
-              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] py-[12px] md:py-[14px] text-[#333] placeholder:text-[#333]/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[14px] md:text-[16px] resize-none min-h-[80px] md:min-h-[100px]"
+              className="w-full bg-[rgba(255,255,255,0.25)] backdrop-blur-[12px] border border-[rgba(255,180,0,0.35)] rounded-[20px] px-[20px] py-[12px] md:py-[14px] text-[#333] placeholder:text-[#333]/40 focus:outline-none focus:border-[rgba(255,150,0,0.7)] focus:bg-[rgba(255,255,255,0.35)] focus:shadow-[0_0_12px_rgba(255,180,0,0.3)] transition-all duration-300 text-[14px] md:text-[16px] resize-none min-h-[70px] md:min-h-[100px]"
               value={formData.message}
               onChange={handleInputChange}
             />
