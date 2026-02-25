@@ -216,7 +216,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
               boxShadow: "0 4px 12px rgba(255, 170, 0, 0.35)"
             }}
             whileTap={{ scale: 0.98 }}
-            className="submit-btn w-[100px] h-[32px] flex items-center justify-center bg-[rgba(255,190,0,0.22)] backdrop-blur-[12px] border border-[rgba(255,160,0,0.6)] text-black font-semibold rounded-[24px] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-[1.2px] text-[11px] shadow-sm"
+            className="submit-btn w-[85px] h-[28px] flex items-center justify-center bg-[rgba(255,190,0,0.22)] backdrop-blur-[12px] border border-[rgba(255,160,0,0.6)] text-black font-semibold rounded-[20px] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-[1.2px] text-[10px] shadow-sm"
           >
             {status === 'submitting' ? 'Submitting...' : 'Submit'}
           </motion.button>
@@ -246,7 +246,7 @@ const Contact = ({ id = "contact", className }: ContactProps) => {
         )}
 
         {/* Contact Information */}
-        <div className="mt-20 md:mt-28 w-full pb-10 md:pb-20">
+        <div className="mt-24 md:mt-32 w-full pb-10 md:pb-20">
           <div className="flex flex-col gap-[24px] md:gap-[32px] p-4 md:p-6 bg-[rgba(255,240,200,0.35)] backdrop-blur-[18px] border-none rounded-[24px] md:rounded-[32px] max-w-[600px] shadow-sm leading-[1.6]">
             <div className="flex flex-col gap-[2px] group">
               <span className="text-[10px] uppercase tracking-[3px] text-black font-bold opacity-60">Call Us</span>
